@@ -1,7 +1,12 @@
 from django.shortcuts import render
+
 from django.http import HttpResponse
+from .models import Movie, Genre
 # Create your views here.
 
 
 def index(request):
-    return HttpResponse("Servas Odida. You're at the movies index.")
+
+    titles = "<br>".join([movie.title for movie in Movie.objects.all()])
+
+    return HttpResponse(titles)
